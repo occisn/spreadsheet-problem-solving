@@ -477,9 +477,17 @@ _Work out the first ten digits of the sum of the following one-hundred 50-digit 
 53503534226472524250874054075591789781264330331690_  
 [(source)](https://projecteuler.net/problem=13)
 
-Two solutions are proposed:  
-_(i)_ spreadsheet capabilities (use of rows and columns),  
-_(ii)_ one-liner. **_TODO_**
+### Only Office
+
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
+
+### Libre Office
+
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
+
+### Excel
+
+A solution is proposed, based on spreadsheet capabilities (use of rows and columns).
 
 Excel cannot handle numbers with so many significant digits. But they can be stored in strings, and be manipulated under that form.  
 Solution _(i)_ breaks down each number into digits, and adds all digits from the right-most to the left-most, while keeping track of the carry.
