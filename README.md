@@ -29,15 +29,27 @@ _If we list all the natural numbers below 10 that are multiples of 3 or 5, we ge
 
 ### Only Office
 
-TODO
+Three solutions are proposed under the form a one-liner :
+``` onlyoffice
+=SUMPRODUCT(--(((MOD(ROW(INDIRECT("A1:A"&D11)),3)=0)+(MOD(ROW(INDIRECT("A1:A"&D11)),5)=0))>0),ROW(INDIRECT("A1:A"&D11)))
+```
+``` onlyoffice 
+=SUM((((MOD(ROW(INDIRECT("A1:A"&D11)),3)=0)+(MOD(ROW(INDIRECT("A1:A"&D11)),5)=0))>0)*ROW(INDIRECT("A1:A"&D11)))
+```
+``` onlyoffice 
+=SUM(IF((MOD(ROW(INDIRECT("A1:A"&D11)),3)=0)+(MOD(ROW(INDIRECT("A1:A"&D11)),5)=0)>0,ROW(INDIRECT("A1:A"&D11)),0))
+```
+D11 cell contains 999.
+
+Another solution uses spreadsheet capabilites (use of rows and columns).
 
 ### Libre Office
 
 Two solutions are proposed under the form a one-liner :
-``` OnlyOffice
+``` libreoffice
 =SUMPRODUCT(((MOD(ROW(INDIRECT("1:"&D11)),3)=0)+(MOD(ROW(INDIRECT("1:"&D11)),5)=0))>0,ROW(INDIRECT("1:"&D11)))
 ```
-``` OnlyOffice 
+``` libreoffice 
 =SUM(IF((MOD(ROW(INDIRECT("1:"&D11)),3)=0)+(MOD(ROW(INDIRECT("1:"&D11)),5)=0)>0, ROW(INDIRECT("1:"&D11)),0))
 ```
 The second one requires Ctrl-Shift-Enter.  
