@@ -445,6 +445,16 @@ The product of these numbers is 26 x 63 x 78 x 14 = 1788696.
 What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20 x 20 grid?_  
 [(source)](https://projecteuler.net/problem=11)
 
+### Only Office
+
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
+
+### Libre Office
+
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
+
+### Excel
+
 Two solutions are proposed:  
 _(i)_ spreadsheet capabilities (use of rows and columns),  
 _(ii)_ one-liner based on array formulas.
