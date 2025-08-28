@@ -212,6 +212,16 @@ IF(PRODUCT = REVERSED_PRODUCT; PRODUCT; 0)))
 
 _2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder. What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?_ [(source)](https://projecteuler.net/problem=5)
 
+### Only Office
+
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
+
+### Libre Office
+
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
+
+### Excel
+
 VBA solution :
 
 ``` VBA
