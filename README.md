@@ -1,4 +1,4 @@
-# excel-problem-solving
+# spreadsheet-problem-solving
 
 This hobby project uses **spreadsheets** to solve numeric puzzles as those proposed by Project Euler.
 
@@ -15,128 +15,37 @@ When possible, several such solutions are presented:
 
 ## Table of contents
 
-**Tools:** [recursion](#tools-recursion), [array formulas](#tools-array-formulas), [useful functions](#tools-useful-functions), [VBA functions on primality](#tools-vba-functions-on-primality)
-
 **Project Euler problems:**
 [1](#project-euler-001-multiples-of-3-or-5), [2](#project-euler-002-even-fibonacci-numbers), ...,  [4](#project-euler-004-largest-palindrome-product), [5](#project-euler-005-smallest-multiple), [6](#project-euler-006-sum-square-difference), [7](#project-euler-007-10001st-prime), ...,  [8](#project-euler-008-largest-product-in-a-series), 
 [9](#project-euler-009-special-pythagorean-triplet), ...,  [11](#project-euler-011-largest-product-in-a-grid), ..., [13](#project-euler-013-large-sum)
 
-## Tools: recursion
+**Excel Annexes:** [recursion](#annex-excel-tools-recursion), [array formulas](#annex-excel-tools-array-formulas), [useful functions](#annex-excel-tools-useful-functions), [VBA functions on primality](#annex-excel-tools-vba-functions-on-primality)
 
-Recursion can be achieved by the use of `LET` and `LAMBDA`.
-
-For instance, this formula calculates 10!:
-``` excel
-= LET(
-SUB; LAMBDA(ME;N; IF(N=0; 1; N*ME(ME; N-1)));
-SUB(SUB; 10))
-```
-Value: 3628800
-
-The same with tail-call recursion:
-``` excel
-=LET(
-SUB; LAMBDA(ME;ACC;N; IF(N=0; ACC; ME(ME;ACC*N; N-1)));
-SUB(SUB; 1; 10))
-```
-Value: 3628800
-
-## Tools: array formulas
-
-Create a vertical array:  
-- `{1;2;3;4;5}` creates a vertical array 1...5  
-- `SEQUENCE(10)` creates a vertical array 1...10  
-- `SEQUENCE(1,10)` creates a vertical array 1...10  
-- `SEQUENCE(10)*SEQUENCE(1,10)` creates a 2D array 1...10 x 1...10 containing products  
-- trick: `IF({1;0}; 4; 5)` creates a vertical array with two elements: 4 and 5
-
-Return specific element of an array:  
-- `INDEX(array; row)`  
-- `INDEX(array;; column)`
-
-Operations on arrays:  
-- `MAP`  
-- `SUM`  
-- `REDUCE` (`REDUCE([initial_value], array, lambda(accumulateur, value, body))`)  
-- `MAX`
-
-Some usual functions accept array and return array.  
-For instance:  
-- `MID` (substring) with a sequence of position in string; returns a horizontal array
-
-## Tools: useful functions
-
-**Operations on range:** 
-`OFFSET(cell; 0; 0; 1; 4)` refers to the range spanning from 'cell' with height 1 and width 4  
-`OFFSET(cell; 1; 2)` refers to the cell located 1 row below and 2 columns on the right of 'cell' 
-
-**Operations on strings:**  
-substring: `MID`
-
-**String to number:**  
-convert string to number: `VALUE`
-
-**Digits of a number:**  
-- number of digits: `LEN`  
-- M-th digit of N (counting from right): `MOD(QUOTIENT(N; 10^(M-1)); 10)`  
-- M-th digit of N (couting from left): `MOD(QUOTIENT(N; 10^(LEN(N)-M)); 10)`  
-- sum of digits of N (with separate identification of each digits):  
-`SUM(MAP(SEQUENCE(LEN(N)); LAMBDA(M; MOD(QUOTIENT(N; 10^(M-1)); 10))))`   
-- sum of digits of N (via 2-cell accumulator):  
-`INDEX(REDUCE(IF({1;0}; 0; N); SEQUENCE(LEN(N)); LAMBDA(ACC;N; IF({1;0}; INDEX(ACC; 1) + MOD(INDEX(ACC; 2); 10); QUOTIENT(INDEX(ACC; 2); 10)))); 1)`
-- product of digits of N (via 2-cell accumulator):  
-`INDEX(REDUCE(IF({1;0}; 1; N); SEQUENCE(LEN(N)); LAMBDA(ACC;N; IF({1;0}; INDEX(ACC; 1) * MOD(INDEX(ACC; 2); 10); QUOTIENT(INDEX(ACC; 2); 10)))); 1)`
-
-**Digits of a number expressed as a string:**  
-- convert string S to horizontal array of digits: `VALUE(MID(S; SEQUENCE(1; LEN(S)); 1))`  
-- multiply digits of a number expressed as a string S: `PRODUCT(VALUE(MID(S; SEQUENCE(1; LEN(S)); 1)))`
-
-## Tools: VBA functions on primality
-
-Return reversed number:
-``` VBA
-Function ReversedNumber(ByVal n As Long) As Long
-    Dim LastDigit As Long
-    ReversedNumber = 0
-    Do While n > 0
-        LastDigit = n Mod 10
-        n = n \ 10
-        ReversedNumber = 10 * ReversedNumber + LastDigit
-    Loop
-End Function
-```
-
-Test if a number is prime:
-
-``` VBA
-Function IsPrime(n As Long) As Boolean
-    If (n = 2) Or (n = 3) Or (n = 5) Or (n = 7) Then
-        IsPrime = True
-        Exit Function
-    End If
-    If (n <= 1) Or (n Mod 2 = 0) Or (n Mod 3 = 0) Then
-        IsPrime = False
-        Exit Function
-    End If
-    Dim squareRoot As Double
-    Dim squareRootInt As Long
-    Dim i As Long
-    squareRoot = Sqr(n)
-    squareRootInt = Fix(squareRoot)
-    For i = 5 To squareRootInt Step 6
-        If (n Mod i = 0) Or (n Mod (i + 2) = 0) Then
-            IsPrime = False
-            Exit Function
-        End If
-    Next i
-    IsPrime = True
-End Function
-```
 
 ## Project Euler 001: Multiples of 3 or 5
 
 _If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000._
 [(source)](https://projecteuler.net/problem=1)
+
+### Only Office
+
+TODO
+
+### Libre Office
+
+Two solutions are proposed under the form a one-liner :
+``` OnlyOffice
+=SUMPRODUCT(((MOD(ROW(INDIRECT("1:"&D11)),3)=0)+(MOD(ROW(INDIRECT("1:"&D11)),5)=0))>0,ROW(INDIRECT("1:"&D11)))
+```
+``` OnlyOffice 
+=SUM(IF((MOD(ROW(INDIRECT("1:"&D11)),3)=0)+(MOD(ROW(INDIRECT("1:"&D11)),5)=0)>0, ROW(INDIRECT("1:"&D11)),0))
+```
+The second one requires Ctrl-Shift-Enter.  
+D11 cell contains 999.
+
+Another solution uses spreadsheet capabilites (use of rows and columns).
+
+### Excel
 
 VBA solution (and a variant with LongLong):
 ``` VBA
@@ -534,5 +443,117 @@ _(ii)_ one-liner. **_TODO_**
 
 Excel cannot handle numbers with so many significant digits. But they can be stored in strings, and be manipulated under that form.  
 Solution _(i)_ breaks down each number into digits, and adds all digits from the right-most to the left-most, while keeping track of the carry.
+
+## (Annex) Excel tools: recursion
+
+Recursion can be achieved by the use of `LET` and `LAMBDA`.
+
+For instance, this formula calculates 10!:
+``` excel
+= LET(
+SUB; LAMBDA(ME;N; IF(N=0; 1; N*ME(ME; N-1)));
+SUB(SUB; 10))
+```
+Value: 3628800
+
+The same with tail-call recursion:
+``` excel
+=LET(
+SUB; LAMBDA(ME;ACC;N; IF(N=0; ACC; ME(ME;ACC*N; N-1)));
+SUB(SUB; 1; 10))
+```
+Value: 3628800
+
+## (Annex) Excel tools: array formulas
+
+Create a vertical array:  
+- `{1;2;3;4;5}` creates a vertical array 1...5  
+- `SEQUENCE(10)` creates a vertical array 1...10  
+- `SEQUENCE(1,10)` creates a vertical array 1...10  
+- `SEQUENCE(10)*SEQUENCE(1,10)` creates a 2D array 1...10 x 1...10 containing products  
+- trick: `IF({1;0}; 4; 5)` creates a vertical array with two elements: 4 and 5
+
+Return specific element of an array:  
+- `INDEX(array; row)`  
+- `INDEX(array;; column)`
+
+Operations on arrays:  
+- `MAP`  
+- `SUM`  
+- `REDUCE` (`REDUCE([initial_value], array, lambda(accumulateur, value, body))`)  
+- `MAX`
+
+Some usual functions accept array and return array.  
+For instance:  
+- `MID` (substring) with a sequence of position in string; returns a horizontal array
+
+## (Annex) Excel tools: useful functions
+
+**Operations on range:** 
+`OFFSET(cell; 0; 0; 1; 4)` refers to the range spanning from 'cell' with height 1 and width 4  
+`OFFSET(cell; 1; 2)` refers to the cell located 1 row below and 2 columns on the right of 'cell' 
+
+**Operations on strings:**  
+substring: `MID`
+
+**String to number:**  
+convert string to number: `VALUE`
+
+**Digits of a number:**  
+- number of digits: `LEN`  
+- M-th digit of N (counting from right): `MOD(QUOTIENT(N; 10^(M-1)); 10)`  
+- M-th digit of N (couting from left): `MOD(QUOTIENT(N; 10^(LEN(N)-M)); 10)`  
+- sum of digits of N (with separate identification of each digits):  
+`SUM(MAP(SEQUENCE(LEN(N)); LAMBDA(M; MOD(QUOTIENT(N; 10^(M-1)); 10))))`   
+- sum of digits of N (via 2-cell accumulator):  
+`INDEX(REDUCE(IF({1;0}; 0; N); SEQUENCE(LEN(N)); LAMBDA(ACC;N; IF({1;0}; INDEX(ACC; 1) + MOD(INDEX(ACC; 2); 10); QUOTIENT(INDEX(ACC; 2); 10)))); 1)`
+- product of digits of N (via 2-cell accumulator):  
+`INDEX(REDUCE(IF({1;0}; 1; N); SEQUENCE(LEN(N)); LAMBDA(ACC;N; IF({1;0}; INDEX(ACC; 1) * MOD(INDEX(ACC; 2); 10); QUOTIENT(INDEX(ACC; 2); 10)))); 1)`
+
+**Digits of a number expressed as a string:**  
+- convert string S to horizontal array of digits: `VALUE(MID(S; SEQUENCE(1; LEN(S)); 1))`  
+- multiply digits of a number expressed as a string S: `PRODUCT(VALUE(MID(S; SEQUENCE(1; LEN(S)); 1)))`
+
+## (Annex) Excel tools: VBA functions on primality
+
+Return reversed number:
+``` VBA
+Function ReversedNumber(ByVal n As Long) As Long
+    Dim LastDigit As Long
+    ReversedNumber = 0
+    Do While n > 0
+        LastDigit = n Mod 10
+        n = n \ 10
+        ReversedNumber = 10 * ReversedNumber + LastDigit
+    Loop
+End Function
+```
+
+Test if a number is prime:
+
+``` VBA
+Function IsPrime(n As Long) As Boolean
+    If (n = 2) Or (n = 3) Or (n = 5) Or (n = 7) Then
+        IsPrime = True
+        Exit Function
+    End If
+    If (n <= 1) Or (n Mod 2 = 0) Or (n Mod 3 = 0) Then
+        IsPrime = False
+        Exit Function
+    End If
+    Dim squareRoot As Double
+    Dim squareRootInt As Long
+    Dim i As Long
+    squareRoot = Sqr(n)
+    squareRootInt = Fix(squareRoot)
+    For i = 5 To squareRootInt Step 6
+        If (n Mod i = 0) Or (n Mod (i + 2) = 0) Then
+            IsPrime = False
+            Exit Function
+        End If
+    Next i
+    IsPrime = True
+End Function
+```
 
 (end of README)
