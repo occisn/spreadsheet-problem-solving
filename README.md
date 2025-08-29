@@ -145,11 +145,11 @@ _A palindromic number reads the same both ways. The largest palindrome made from
 
 ### OnlyOffice
 
-**TODO**
+No solution provided.
 
 ### LibreOffice
 
-**TODO**
+No solution provided.
 
 ### Excel
 
@@ -273,13 +273,21 @@ Hence the difference between the sum of the squares of the first ten natural num
 Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum._  
 [(source)](https://projecteuler.net/problem=6)
 
-### OnlyOffice
-
-**TODO**
-
 ### LibreOffice
 
-**TODO**
+It is proposed two solutions. One is based on spreadsheet capabilites (use of row and columns). The other is based on array formulas:
+``` LibreOffice
+=SUM(ROW(INDIRECT("A1:A"&E16)))^2-SUM(ROW(INDIRECT("A1:A"&E16))^2)
+```
+where E16 contains 100.
+
+### OnlyOffice
+
+It is proposed two solutions. One is based on spreadsheet capabilites (use of row and columns). The other is based on array formulas:
+``` OnlyOffice
+=SUM(ROW(INDIRECT("A1:A"&E16)))^2-SUM(ROW(INDIRECT("A1:A"&E16))^2)
+```
+where E16 contains 100.
 
 ### Excel
 
@@ -415,11 +423,11 @@ Find the product abc._
 
 ### OnlyOffice
 
-**TODO**
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
 
 ### LibreOffice
 
-**TODO**
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
 
 ### Excel
 
