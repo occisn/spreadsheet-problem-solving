@@ -1,8 +1,8 @@
 # spreadsheet-problem-solving
 
-This hobby project uses **spreadsheets** to solve numeric puzzles as those proposed by Project Euler.
+This project uses **spreadsheets** to solve numeric puzzles as those proposed by Project Euler.
 
-This is a personal, exploratory project with no fixed roadmap. Its aim is essentially to improve my skills. Development happens irregularly as time permits.
+This was a temporary hobby project. No further development is foreseen.
 
 It uses [LibreOffice](https://www.libreoffice.org/) and [OnlyOffice](https://www.onlyoffice.com/), two free and open-source solutions, using spreadsheet capabilities and array formulas.
 
@@ -380,11 +380,11 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
 
 ### OnlyOffice
 
-**TODO**
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
 
 ### LibreOffice
 
-**TODO**
+A solution is proposed using spreadsheet capabilites (use of rows and columns).
 
 ### Excel
 
