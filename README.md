@@ -423,11 +423,12 @@ Find the product abc._
 
 ### OnlyOffice
 
+
 A solution is proposed using spreadsheet capabilites (use of rows and columns).
 
 ### LibreOffice
 
-A solution is proposed using spreadsheet capabilites (use of rows and columns).
+A solution is possible using spreadsheet capabilites (use of rows and columns), but file is huge (26 Mo) compared to OnlyOffice (3 Mo) or Excel (9 Mo). It is not included here.
 
 ### Excel
 
