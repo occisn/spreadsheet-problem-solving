@@ -8,6 +8,9 @@ It uses [LibreOffice](https://www.libreoffice.org/) and [OnlyOffice](https://www
 
 It may also propose solution with proprietary [Microsoft Excel](https://www.microsoft.com/en-us/microsoft-365/excel), in order to play with `SEQUENCE`, `REDUCE`, `LAMBDA`, `LET`, recursion, which are not available so far in LibreOffice and OnlyOffice, and even sometimes VBA. 
 
+Any comment? Open an [issue](https://github.com/occisn/spreadsheet-problem-solving/issues), or start a discussion [here](https://github.com/occisn/spreadsheet-problem-solving/discussions) or [at profile level](https://github.com/occisn/occisn/discussions).
+
+
 ## Table of contents
 
 **Project Euler problems:**
